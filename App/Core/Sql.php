@@ -9,7 +9,7 @@ Class Sql{
 
         define("DB_PASSWORD", $_ENV['DB_PASSWORD']);
         define("DB_HOST", $_ENV['DB_HOST']);
-        define("BACKUP_DIR", '../SQL/backup'); // Comment this line to use same script's directory ('.')
+        define("BACKUP_DIR", $_ENV['BACKUP_DIR']); // Comment this line to use same script's directory ('.')
         define("TABLES", '*'); // Full backup
         define("CHARSET", 'utf8');
         define("GZIP_BACKUP_FILE", false); // Set to false if you want plain SQL backup files (not gzipped)

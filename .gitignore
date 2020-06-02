@@ -2,3 +2,4 @@
 .idea/*
 App/Composer/vender/*
 .env
+SQL/backup/*
