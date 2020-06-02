@@ -92,7 +92,7 @@ $Sql = Sql::Update();
 
 if ($session->is_logged_in()) {
     $session->user_id;
-
+}
 
     if (isset($_GET['module'])) {
         $file_dir = Sys() . 'Modules/' . ucfirst($_GET['module']) . '.php';
@@ -108,6 +108,16 @@ if ($session->is_logged_in()) {
         }
     }
 
+
+
+
+
+
+function redirect_to( $location = NULL ) {
+    if ($location != NULL) {
+        header("Location: {$location}");
+        exit;
+    }
 }
 
 
