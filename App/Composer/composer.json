@@ -1,0 +1,10 @@
+{
+    "name": "root/public_html",
+    "authors": [
+        {
+            "name": "ruben",
+            "email": "room3622@gmail.com"
+        }
+    ],
+    "require": {}
+}
