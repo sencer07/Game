@@ -71,9 +71,23 @@ function Devent(){
 
 Devent();
 
+use Symfony\Component\Dotenv\Dotenv;
+
+$dotenv = new Dotenv();
+$dotenv->load(__DIR__.'/.env');
+
+// You can also load several files
+$dotenv->load(__DIR__.'/.env', __DIR__.'/.env');
+
 
 
 $session = new Session();
+
+
+
+//Sql Backups
+$Sql = Sql::Update();
+
 
 
 if ($session->is_logged_in()) {
@@ -83,7 +97,6 @@ if ($session->is_logged_in()) {
     if (isset($_GET['module'])) {
         $file_dir = Sys() . 'Modules/' . ucfirst($_GET['module']) . '.php';
 
-        echo $file_dir;
 
         if (file_exists($file_dir)) {
             include $file_dir;
@@ -96,6 +109,8 @@ if ($session->is_logged_in()) {
     }
 
 }
+
+
 
 
 ob_end_flush();
