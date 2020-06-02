@@ -1,10 +1,15 @@
 {
-    "name": "root/public_html",
+    "name": "room3622 ",
     "authors": [
         {
             "name": "ruben",
             "email": "room3622@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "symfony/dotenv": "^4.4"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
+
