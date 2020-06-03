@@ -16,8 +16,8 @@ if($session->is_logged_in()){
     'release' => '1392 days ago',
     'city' =>
         array(
-            'id' => $city->id,
-            'name' => $city->name,
+            'id'    => $city->id,
+            'name'  => $city->name,
         ),
     'family' => '0',
     'extra' =>
@@ -33,7 +33,7 @@ if($session->is_logged_in()){
         ),
     'progressbars' =>
         array(
-            'rankprogress' => 50000,
+            'rankprogress' => $character->rank_pro,
             'health' => '100',
             'killskill' => '0.00',
             'bustskill' => 0,
@@ -57,11 +57,11 @@ if($session->is_logged_in()){
                     'admin' => 0,
                 ),
         ),
-    'money' => $character->money,
-    'bank' => $character->backmoney,
-    'bullets' => '150',
-    'rankname' => $RPname->RackName,
-    'tickets' =>
+    'money'     => $character->money,
+    'bank'      => $character->backmoney,
+    'bullets'   => $character->bullets,
+    'rankname'  => $RPname->RackName,
+    'tickets'   =>
         array(),
     'bugs' =>
         array(),

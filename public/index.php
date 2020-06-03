@@ -35,6 +35,8 @@ if($session->is_logged_in()){
 
         Render::views("character",$data);
 
+
+
     }else{
 
         Render::views("game",$data);

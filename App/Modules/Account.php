@@ -82,13 +82,19 @@ if (isset($_GET['action'])) {
 
                     $account = Accounts::find_by_id($session->user_id);
 
+
+                    $Ranckname =   Characters::Ranks_Names(0,$characterData->sex);
+
+
+
+
                     $characters = new Characters();
                     $characters->account_id = $account->id;
                     $characters->name = $characterData->name;
                     $characters->alive = 1;
                     $characters->sex = $characterData->sex;
                     $characters->sexKeyName = Characters::sexKeyName($characterData->sex);
-                    $characters->rankNames = "";
+                    $characters->rankNames  = $Ranckname->RackName;
                     $characters->cityid = $rondomcity->id;
                     $characters->money = 0;
                     $characters->backmoney = 0;
@@ -97,6 +103,7 @@ if (isset($_GET['action'])) {
                     $characters->admin = 0;
                     $characters->crime_at = 0;
                     $characters->rank_pro = 0;
+                    $character->bullets = 0;
                     $characters->Save();
 
                 }

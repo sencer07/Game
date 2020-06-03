@@ -22,6 +22,7 @@ class Characters
     public $admin;
     public $crime_at;
     public $rank_pro;
+    public $bullets;
 
 
 
