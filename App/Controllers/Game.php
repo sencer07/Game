@@ -39,8 +39,15 @@ class Game
         $session = new Session();
 
 
-        $account = Accounts::find_by_id($session->user_id);
-        $character = Characters::find_by_account_id($account->id);
+        if ($session->is_logged_in()) {
+            $account = Accounts::find_by_id($session->user_id);
+            $character = Characters::find_by_account_id($account->id);
+        }else{
+            $account="";
+            $character="";
+        }
+
+
 
 
         if(!empty($character->cityid)){
@@ -51,10 +58,11 @@ class Game
 
             $city = "";
 
+
         }
 
 
-        if ($session->is_logged_in()) {
+
 
 
             $data = array(
@@ -72,7 +80,7 @@ class Game
 
             );
 
-        }
+
 
 
 
