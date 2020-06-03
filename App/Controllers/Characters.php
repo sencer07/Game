@@ -23,6 +23,8 @@ class Characters
     public $crime_at;
     public $rank_pro;
     public $bullets;
+    public $rankleval;
+    public $startDate;
 
 
 

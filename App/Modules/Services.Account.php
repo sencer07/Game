@@ -10,9 +10,15 @@ if($session->is_logged_in()){
     $RPname = Characters::Ranks_Names($character->rankNames, $character->sex);
 
 
+
+
+
+
+
+
     $data2 = array(
     'user_status' => 2,
-    'version' => '5.6.16.1',
+    'version' => Game::GameVersion()->version,
     'release' => '1392 days ago',
     'city' =>
         array(

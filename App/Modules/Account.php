@@ -89,21 +89,25 @@ if (isset($_GET['action'])) {
 
 
                     $characters = new Characters();
-                    $characters->account_id = $account->id;
-                    $characters->name = $characterData->name;
-                    $characters->alive = 1;
-                    $characters->sex = $characterData->sex;
-                    $characters->sexKeyName = Characters::sexKeyName($characterData->sex);
-                    $characters->rankNames  = $Ranckname->RackName;
-                    $characters->cityid = $rondomcity->id;
-                    $characters->money = 0;
-                    $characters->backmoney = 0;
-                    $characters->airplanetypes = 0;
-                    $characters->flytime = time() - 50;
-                    $characters->admin = 0;
-                    $characters->crime_at = 0;
-                    $characters->rank_pro = 0;
-                    $character->bullets = 0;
+
+                    $characters->account_id     = $account->id;
+                    $characters->name           = $characterData->name;
+                    $characters->alive          = 1;
+                    $characters->sex            = $characterData->sex;
+                    $characters->sexKeyName     = Characters::sexKeyName($characterData->sex);
+                    $characters->rankNames      = $Ranckname->RackName;
+                    $characters->cityid         = $rondomcity->id;
+                    $characters->money          = 0;
+                    $characters->backmoney      = 0;
+                    $characters->airplanetypes  = 0;
+                    $characters->flytime        = time() - 50;
+                    $characters->admin          = 0;
+                    $characters->crime_at       = 0;
+                    $characters->rank_pro       = 0;
+                    $characters->bullets        = 0;
+                    $characters->rankleval      = 0;
+                    $characters->startDate      = time();
+
                     $characters->Save();
 
                 }

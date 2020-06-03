@@ -1,6 +1,12 @@
 <?php
 $RPname = Characters::Ranks_Names($data->Characters->rankNames,$data->Characters->sex);
 
+
+//echo "<pre>";
+//print_r($data);
+//exit();
+
+
 ?>
 <table align="center" cellpadding="0" cellspacing="0" width="90%">
     <tbody>
@@ -38,7 +44,7 @@ $RPname = Characters::Ranks_Names($data->Characters->rankNames,$data->Characters
                 </tr>
                 <tr>
                     <td><b>Data de início</b></td>
-                    <td>09-04-2019 08:16:27</td>
+                    <td><?php echo date('d-m-Y H:i:s', $data->Characters->startDate); ?></td>
                 </tr>
                 <tr>
                     <td><b>Estatuto </b><img rel="tooltip" src="/static/images/game/generic/tooltip.png" title="O teu estatuto actual. Fazer crimes e outras &lt;br /&gt;actividades criminosas v&atilde;o permitir subir-te no estatuto. &lt;br /&gt; Podes encontrar uma lista de todos os estatutos na GameWiki."></td>

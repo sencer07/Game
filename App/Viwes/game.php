@@ -36,10 +36,10 @@
     <script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
 
     <!-- Omerta -->
-    <link href="//<?php echo $data->server_name; ?>/assets/5.6.16.1/layout.css" rel="stylesheet"/>
+    <link href="//<?php echo $data->server_name; ?>/assets/<?php echo $data->game->version; ?>/layout.css" rel="stylesheet"/>
 
-    <link rel="stylesheet" href="/static/css/game/kill/style.css?v=5.6.16.1">
-    <script src="//<?php echo $data->server_name; ?>/assets/5.6.16.1/layout.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/static/css/game/kill/style.css?v=<?php echo $data->game->version; ?>">
+    <script src="//<?php echo $data->server_name; ?>/assets/<?php echo $data->game->version; ?>/layout.js" type="text/javascript"></script>
 
 
 
@@ -49,10 +49,10 @@
 
             // Server info
             omerta.game = "com";
-            omerta.version = "5.6.16.1";
+            omerta.version = "<?php echo $data->game->version; ?>";
             omerta.gameTitle = 'Omerta (COM)';
 
-            omerta.chat.nick = 'Marboro';
+            omerta.chat.nick = '<?php echo ucfirst($data->character->name); ?>';
             omerta.chat.server = 'https://realtime.barafranca.com';
             omerta.character.info.level(0);
             omerta.chat.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXJzaW9uIjoiY29tIiwiaWQiOiI3NzY3MDEiLCJuYW1lIjoiTWFyYm9ybyIsImNpdHkiOiIzIiwiZmFtaWx5X2lkIjoiMCIsImxhc3RyYW5rIjoiUGljY2lvdHRvIn0.z9-zBy3WtMFh8bjH6vC4FSF0pIy3m0qFDdZ415objHs';
@@ -144,7 +144,7 @@
                 </li>
 
                 <li class="pull-right bar"><a id="displayText">
-                        room3622@gmail.com
+                       <?php echo ucfirst($data->account->email); ?>
                     </a>
                 </li>
 
@@ -757,9 +757,8 @@
         // Fix character
 
         var startDate = new Date();
-        startDate.setTime(1590782060 * 1000
-        )
-        omerta.character.info.name('Marboro');
+        startDate.setTime(<?php echo $data->character->startDate; ?> * 1000)
+        omerta.character.info.name('<?php echo ucfirst($data->character->name); ?>');
         omerta.character.info.gender('1');
         omerta.character.info.avatar("//<?php echo $data->server_name; ?>/omerta_placeholder.png");
         omerta.character.info.dc_level(0);
@@ -767,15 +766,15 @@
         omerta.character.info.bloodtype('A');
         omerta.character.info.testament('');
         omerta.character.progress.health(100);
-        omerta.character.progress.rank('Picciotto');
+        omerta.character.progress.rank('<?php echo $data->character->rankNames; ?>');
         omerta.character.progress.rank_progress(100);
         omerta.character.progress.kill_skill(0);
         omerta.character.progress.kill(0);
         omerta.character.progress.leader_points_percentage(47.94);
         omerta.character.progress.leader_points("5");
         omerta.character.progress.position('#5207');
-        omerta.character.game.city_id('New York');
-        omerta.character.game.city('New York');
+        omerta.character.game.city_id('<?php echo ucfirst($data->city); ?>');
+        omerta.character.game.city('<?php echo ucfirst($data->city); ?>');
 
         omerta.users([]);
         omerta.roundVersion('23');
