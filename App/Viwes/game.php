@@ -433,7 +433,7 @@
                     </div>                </div>
 
                 <div class="char-info-container">
-                    <a class="name" href="/user.php?nick=Marboro">Marboro</a>
+                    <a class="name" href="/user.php?nick=<?php echo $data->character->name; ?>"><?php echo $data->character->name; ?></a>
                     <a class="family family-empty" href="/family_recruitment.php">No family</a>
                 </div>
             </div>

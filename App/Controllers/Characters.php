@@ -25,6 +25,7 @@ class Characters
     public $bullets;
     public $rankleval;
     public $startDate;
+    public $dead;
 
 
 
@@ -69,6 +70,34 @@ class Characters
             endforeach;
         }
 
+
+    }
+
+
+    public static function DeadOrAlive(){
+
+
+        $session = new Session();
+
+
+        if ($session->is_logged_in()) {
+
+            $account = Accounts::find_by_id($session->user_id);
+            $character = Characters::find_by_account_id($account->id);
+
+            if($character->dead ==1){
+
+                $data = 3;
+
+            }elseif ($character->dead ==null){
+
+                $data = 2;
+            }
+
+
+        }
+
+        return $data;
 
     }
 

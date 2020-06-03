@@ -10,14 +10,14 @@ if($session->is_logged_in()){
     $RPname = Characters::Ranks_Names($character->rankNames, $character->sex);
 
 
-
-
-
-
+    /**
+     * 'user_status' => 2,
+     * change to 3 layout thet the account is deade
+     */
 
 
     $data2 = array(
-    'user_status' => 2,
+    'user_status' => Characters::DeadOrAlive(),
     'version' => Game::GameVersion()->version,
     'release' => '1392 days ago',
     'city' =>
