@@ -24,6 +24,19 @@ if($session->is_logged_in()){
 
 
 
+
+        $data = array(
+
+            "server_name"   => $_SERVER ['SERVER_NAME'],
+            "Online"        => 1,
+            "Lackeys"       => 2,
+            "Total"         => 3,
+            "Registered"    => 4,
+            "game"          => Game::GameVersion(),
+
+
+        );
+
         Render::views("character",$data);
 
 
@@ -38,6 +51,7 @@ if($session->is_logged_in()){
         //print_r($data);
 
         //echo "</pre>";
+
 
 
 
