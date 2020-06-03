@@ -29,6 +29,25 @@ class Characters
 
 
 
+    public static function UpdateTheDead(){
+        $session = new Session();
+        if ($session->is_logged_in()) {
+            if ($_GET['module'] == "Account") {
+                $account = Accounts::find_by_id($session->user_id);
+                if ($account->id) {
+                    $character = Characters::find_by_account_id($account->id);
+                    if(!empty($character)){
+
+                        if($character->dead ==1){
+                            $character->alive=0;
+                            $character->Save();
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     public static function RP($levol=0){
 
 
