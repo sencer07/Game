@@ -66,7 +66,7 @@ if($session->is_logged_in()){
     'money'     => $character->money,
     'bank'      => $character->backmoney,
     'bullets'   => $character->bullets,
-    'rankname'  => $RPname->RackName,
+    'rankname'  => $character->rankNames,
     'tickets'   =>
         array(),
     'bugs' =>
