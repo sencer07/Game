@@ -103,6 +103,51 @@ class Game
 
 
 
+    public static function Rank_Progress($rp=null){
+
+
+
+        if(empty($rp)){
+
+
+            echo "  <td bgcolor=red width='100%' align='center'><span style='color:black;text-shadow: none;'>$rp%</span></td>";
+
+        }elseif ($rp==100){
+
+
+            echo "<td bgcolor=#EAC137 width='100%' align='center'><span style='color:black;text-shadow: none;'>$rp%</span></td>";
+
+        }else{
+
+
+            if($rp <= 50){
+
+                $cal= 100-$rp;
+                echo "<td bgcolor=#EAC137 width='$rp%'></td>";
+                echo "<td bgcolor=red width='$cal%' ><span style='color:black;text-shadow: none;'>$rp%</span></td>";
+
+
+
+
+            }
+            if($rp >= 51){
+
+                $cal= 100-$rp;
+                echo "<td bgcolor=#EAC137 width='$rp%' align='center'><span style='color:black;text-shadow: none;'>$rp%</span></td>";
+                echo "<td bgcolor=red width='$cal%' ></td>";
+
+            }
+
+
+        }
+
+
+
+
+
+    }
+
+
 
     function databese() {
         // We could simply use `global $db;`, but using globals is bad. Instead we can do this:

@@ -85,33 +85,31 @@ if (isset($_GET['action'])) {
 
                 if ($session->is_logged_in()) {
 
-                    $rondomcity = Characters::RondonCity();
-
-                    $account = Accounts::find_by_id($session->user_id);
-
-
-                    $Ranckname = Characters::Ranks_Names(0, $characterData->sex);
+                    $rondomcity     = Characters::RondonCity();
+                    $account        = Accounts::find_by_id($session->user_id);
+                    $Ranckname      = Characters::Ranks_Names(0, $characterData->sex);
 
 
-                    $characters = new Characters();
-
-                    $characters->account_id = $account->id;
-                    $characters->name = $characterData->name;
-                    $characters->alive = 1;
-                    $characters->sex = $characterData->sex;
-                    $characters->sexKeyName = Characters::sexKeyName($characterData->sex);
-                    $characters->rankNames = $Ranckname->RackName;
-                    $characters->cityid = $rondomcity->id;
-                    $characters->money = 0;
-                    $characters->backmoney = 0;
-                    $characters->airplanetypes = 0;
-                    $characters->flytime = time() - 50;
-                    $characters->admin = 0;
-                    $characters->crime_at = 0;
-                    $characters->rank_pro = 0;
-                    $characters->bullets = 0;
-                    $characters->rankleval = 0;
-                    $characters->startDate = time();
+                    $characters                 = new Characters();
+                    $characters->account_id     = $account->id;
+                    $characters->name           = $characterData->name;
+                    $characters->alive          = 1;
+                    $characters->sex            = $characterData->sex;
+                    $characters->sexKeyName     = Characters::sexKeyName($characterData->sex);
+                    $characters->rankNames      = $Ranckname->RackName;
+                    $characters->cityid         = $rondomcity->id;
+                    $characters->money          = 0;
+                    $characters->backmoney      = 0;
+                    $characters->airplanetypes  = 0;
+                    $characters->flytime        = time() - 50;
+                    $characters->admin          = 0;
+                    $characters->crime_at       = 0;
+                    $characters->rank_pro       = 0;
+                    $characters->bullets        = 0;
+                    $characters->rankleval      = 0;
+                    $characters->startDate      = time();
+                    $characters->dead           = 0;
+                    $characters->handcrimecount = 0;
 
                     $characters->Save();
 

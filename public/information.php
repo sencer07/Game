@@ -2,4 +2,11 @@
 require_once("../initialize.php");
 
 
-Render::views("information", Characters::teste());
+
+
+$data =array(
+
+);
+
+
+Render::views("informationv2", $data);

@@ -40,15 +40,6 @@ if ($validation->fails()) {
 
         $session->login($found_user);
         $messages="";
-        /*
-        $messages=array(
-            "success"=>"Registration successful. To activate your account, please confirm your email address by clicking on the link we just sent to your mailbox.",
-            "forward"=> "\index.php"
-        );
-
-        /*
-         *
-         */
 
     }else{
         $code = 10;
@@ -61,15 +52,11 @@ if ($validation->fails()) {
 
 }
 
-
-
-
-
 $debug = array($_POST);
 $data = array(
-    "data" => $messages,
-    "code" => $code,
-    "time" => time(),
+    "data"  => $messages,
+    "code"  => $code,
+    "time"  => time(),
     "debug" => $debug
 );
 

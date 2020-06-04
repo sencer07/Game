@@ -26,6 +26,29 @@ class Characters
     public $rankleval;
     public $startDate;
     public $dead;
+    public $handcrimecount;
+
+
+
+    public static function CrimeCount(){
+
+        $session = new Session();
+
+        if ($session->is_logged_in()) {
+
+            $account = Accounts::find_by_id($session->user_id);
+            $character = Characters::find_by_account_id($account->id);
+
+            $character->handcrimecount = $character->handcrimecount +1;
+
+            $character->Save();
+
+
+        }
+
+
+    }
+
 
 
 
@@ -48,9 +71,68 @@ class Characters
         }
     }
 
+
+    public static function UpdateUserRP($rankleval=null){
+
+        $data = Game::Viwedata();
+        $session = new Session();
+
+
+        if ($session->is_logged_in()) {
+
+            $account = Accounts::find_by_id($session->user_id);
+            $character = Characters::find_by_account_id($account->id);
+
+
+
+
+            $character->rank_pro = $character->rank_pro + self::RP($data->character->rankleval) ;
+            $character->Save();
+
+            if($character->rank_pro >= 100){
+
+
+                    self::UpdateUserRpLevel();
+
+
+            }
+
+
+        }
+
+
+
+    }
+
+
+    public static function UpdateUserRpLevel(){
+
+        $session = new Session();
+
+
+        if ($session->is_logged_in()) {
+
+            $account = Accounts::find_by_id($session->user_id);
+            $character = Characters::find_by_account_id($account->id);
+
+            $character->rank_pro = 0;
+            $character->rankleval = $character->rankleval + 1;
+            $character->Save();
+
+
+            $character->rankNames = self::Ranks_Names($character->rankleval, $character->sex)->RackName;
+            $character->Save();
+
+        }
+
+    }
+
+
+
+
+
+
     public static function RP($levol=0){
-
-
 
         if($levol == "0"){  $data = 10/100*100; }
         if($levol == "1"){  $data = self::RP(0)/2; }
@@ -108,7 +190,7 @@ class Characters
 
                 $data = 3;
 
-            }elseif ($character->dead ==null){
+            }elseif ($character->dead ==0){
 
                 $data = 2;
             }
@@ -165,7 +247,7 @@ class Characters
             case 1:
 
                 if($sex ==1){
-                    $RackName = "Deliveryboy";
+                    $RackName = "Delivery boy";
                 }
                 elseif ($sex==2){
                     $RackName = "Delivery Girl";
