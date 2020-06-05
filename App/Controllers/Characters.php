@@ -27,11 +27,15 @@ class Characters
     public $startDate;
     public $dead;
     public $handcrimecount;
+    public $handcrimetime;
 
 
 
     public static function CrimeCount(){
 
+        /**
+         * counting hand crimes only
+         */
         $session = new Session();
 
         if ($session->is_logged_in()) {
@@ -40,6 +44,9 @@ class Characters
             $character = Characters::find_by_account_id($account->id);
 
             $character->handcrimecount = $character->handcrimecount +1;
+
+            $character->handcrimetime = time()+90;
+
 
             $character->Save();
 
@@ -53,6 +60,13 @@ class Characters
 
 
     public static function UpdateTheDead(){
+        /**
+         * very inportan this update the user to dead
+         * still need som work
+         * @todo if the user gows to make new carecter and tray to loog in still need to
+         * display account is dead
+         * then back to new charecter still like a loop
+         */
         $session = new Session();
         if ($session->is_logged_in()) {
             if ($_GET['module'] == "Account") {
@@ -83,14 +97,18 @@ class Characters
             $account = Accounts::find_by_id($session->user_id);
             $character = Characters::find_by_account_id($account->id);
 
-
-
-
             $character->rank_pro = $character->rank_pro + self::RP($data->character->rankleval) ;
             $character->Save();
 
             if($character->rank_pro >= 100){
 
+                /**
+                 * verti iportant dont tach
+                 * hear is wen the player is 100 or more  RP menes is ready to upgrade
+                 *
+                 * but still needs chack if is level 16 if is level 16 Rp will not be ressete
+                 *
+                 */
 
                     self::UpdateUserRpLevel();
 
@@ -107,8 +125,10 @@ class Characters
 
     public static function UpdateUserRpLevel(){
 
+        /**
+         * this funtion is to update all RP from it will be cold from meny functions
+         */
         $session = new Session();
-
 
         if ($session->is_logged_in()) {
 
@@ -177,9 +197,14 @@ class Characters
 
     public static function DeadOrAlive(){
 
+        /**
+         * this function is displayng on acount services
+         * will send 3 or 2
+         * 3 account is dead
+         * 2 account is alive
+         */
 
         $session = new Session();
-
 
         if ($session->is_logged_in()) {
 
@@ -194,7 +219,6 @@ class Characters
 
                 $data = 2;
             }
-
 
         }
 
@@ -389,6 +413,7 @@ class Characters
     }
 
 
+    /**
 
     public static function teste(){
 
@@ -407,6 +432,8 @@ class Characters
         $data = (object) $data;
         return $data;
     }
+
+    */
 
     public static function rankNames($number=null){
 

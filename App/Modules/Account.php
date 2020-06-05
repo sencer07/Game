@@ -110,6 +110,7 @@ if (isset($_GET['action'])) {
                     $characters->startDate      = time();
                     $characters->dead           = 0;
                     $characters->handcrimecount = 0;
+                    $characters->handcrimetime  = 0;
 
                     $characters->Save();
 

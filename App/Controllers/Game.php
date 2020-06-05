@@ -32,12 +32,9 @@ class Game
 
 
     public static function Viwedata(){
-    // collect all data to send to viwe asess by array
-
-
+        // collect all data to send to viwe asess by array
 
         $session = new Session();
-
 
         if ($session->is_logged_in()) {
             $account = Accounts::find_by_id($session->user_id);
@@ -46,8 +43,6 @@ class Game
             $account="";
             $character="";
         }
-
-
 
 
         if(!empty($character->cityid)){
@@ -60,10 +55,6 @@ class Game
 
 
         }
-
-
-
-
 
             $data = array(
 
@@ -80,13 +71,7 @@ class Game
 
             );
 
-
-
-
-
         $data = (object) $data;
-
-
         return $data;
     }
 
@@ -96,7 +81,6 @@ class Game
 
         $data = self::find_by_id("1");
 
-
         return $data;
 
     }
@@ -105,29 +89,27 @@ class Game
 
     public static function Rank_Progress($rp=null){
 
+        /**
+         * this function is dysplayng the ranck progrese on info page
+         *
+         */
 
 
         if(empty($rp)){
-
 
             echo "  <td bgcolor=red width='100%' align='center'><span style='color:black;text-shadow: none;'>$rp%</span></td>";
 
         }elseif ($rp==100){
 
-
             echo "<td bgcolor=#EAC137 width='100%' align='center'><span style='color:black;text-shadow: none;'>$rp%</span></td>";
 
         }else{
-
 
             if($rp <= 50){
 
                 $cal= 100-$rp;
                 echo "<td bgcolor=#EAC137 width='$rp%'></td>";
                 echo "<td bgcolor=red width='$cal%' ><span style='color:black;text-shadow: none;'>$rp%</span></td>";
-
-
-
 
             }
             if($rp >= 51){
@@ -138,12 +120,7 @@ class Game
 
             }
 
-
         }
-
-
-
-
 
     }
 
@@ -189,8 +166,6 @@ class Game
 
             $object_array[] = self::instantiate($row[$i++]);
         }
-
-
 
         return $object_array;
     }
