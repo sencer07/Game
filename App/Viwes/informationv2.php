@@ -131,7 +131,16 @@ $data = Game::Viwedata();
                 </tr>
                 <tr>
                     <td><a class="text-white" href="/index.php?module=Crimes"><b>Next crime attempt</b></a></td>
-                    <td><a href="/index.php?module=Crimes">Now</a></td>
+
+                    <td><a href="/index.php?module=Crimes"><?php
+                            //<span data-time-end='1591370857'>1 M15 S</span>
+
+                            $handCrime = $data->character->handcrimetime;
+                            if($data->character->handcrimetime >= time()){ echo "<span data-time-end='$handCrime'>$handCrime</span>"; }else{ echo "Now"; }
+
+
+                            ?></a></td>
+
                 </tr>
                 <tr>
                     <td><a class="text-white" href="/index.php?module=Cars"><b>Next car attempt</b></a></td>
@@ -203,14 +212,6 @@ $data = Game::Viwedata();
 
 
 
-
-
-
-
-
-
-
-
                 <tr>
                     <td><b>Rank progress<img rel="tooltip" src="/static/images/game/generic/tooltip.png" title="The progress achieved in this specific rank. &lt;br /&gt; Once you have reached 100% you will promote to the next rank."></b></td>
 
@@ -226,39 +227,6 @@ $data = Game::Viwedata();
                         </table>
                     </td>
                 </tr>
-
-
-
-
-                <tr>
-                    <td><b>Jailbusting Skill<img rel="tooltip" src="/static/images/game/generic/tooltip.png" title="You can earn this skill by busting other &lt;br /&gt; gangsters out of jail. The higher it is, &lt;br /&gt; the easier it will be to do a successful bust out."></b>
-                    </td>
-
-                    <td align="right">
-                        <table height=20 rules=cols cellpadding=0 cellspacing=0 border=1 bordercolor=black width=200px>
-                            <tr>
-                                <td height=20 width="1%" bgcolor=white>&nbsp;</td>
-                                <td bgcolor=red width="99%"><span style='color:black;text-shadow: none;'>0.1%</span>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

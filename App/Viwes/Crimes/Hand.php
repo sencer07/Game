@@ -1,8 +1,3 @@
-<?php
-
-
-?>
-
 <div id="module_Crimes" class="moduleContainer">
     <div id="crime-choices" class="popup-boxess-container">
 
