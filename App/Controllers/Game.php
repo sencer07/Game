@@ -31,6 +31,97 @@ class Game
     }
 
 
+
+
+    public static function Timeleft($time=null){
+
+        /**
+         * time left function
+         * it will show minuts and seconds on Js
+         * but on php it will display day hours minuts and seconds
+         * all working
+         */
+
+        $time1 = time();
+        $time2 = $time;
+        $total = $time2-$time1;
+        $init = $total;
+
+        $days = "D".floor($init / 86400);
+
+        $hours = " H".floor($init / 3600);
+
+        $minutes = " M".floor(($init / 60) % 60);
+        $seconds = " S".$init % 60;
+
+        if($days=="D0"){
+            $days = "";
+        }
+
+        if($hours==" H0"){
+            $hours = "";
+        }
+        if($minutes===" M0"){
+            $minutes = "";
+        }
+        if($seconds==" S0"){
+            $seconds = "";
+        }
+
+
+        if($time <= time()){
+
+            return "Now";
+
+        }else{
+
+
+            $data2 = "$days$hours$minutes$seconds";
+            $data = "<span data-time-end='".$time."' >" .$data2. "</span>";
+            return $data;
+
+        }
+
+    }
+
+
+
+
+  public static function makeNiceTime($intTime)
+      /**
+       * this is a time ago function
+       * call function by
+       *   echo    makeNiceTime(time()-60);
+       * Give you days hours minuts and seconds ago time
+       *
+       */
+    {
+        $curTime = time();
+        $strTime = '';
+        if ( ($curTime-$intTime) <  (60)) //(24*60*60))
+        {
+            $strTime = sprintf("%d seconds ago", $curTime-$intTime);
+        }
+        else if ( ($curTime-$intTime) <  (60*60)) //(24*60*60))
+        {
+            $strTime = sprintf("%d minutes ago", ($curTime-$intTime) / 60 );
+        }
+        else if ( ($curTime-$intTime) <  (60*60*24)) //(24*60*60))
+        {
+            $strTime = sprintf("%d hours ago", ($curTime-$intTime) / (60*60) );
+        }
+        else if ( ($curTime-$intTime) <  (60*60*24*7)) //(24*60*60))
+        {
+            $strTime = sprintf("%d days ago", ($curTime-$intTime) / (60*60*24) );
+        }
+        else
+        {  // sample: "12.22 am Sat 21-Jul 2012"
+            $strTime = date("g.i a D j-M Y", $intTime);
+        }
+        return $strTime;
+    }
+
+
     public static function Viwedata(){
         // collect all data to send to viwe asess by array
 

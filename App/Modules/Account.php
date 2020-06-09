@@ -10,8 +10,7 @@ $validator = new Validator;
 $validator->addValidator('unique', new UniqueRule());
 
 
-
-    Characters::UpdateTheDead();
+Characters::UpdateTheDead();
 
 
 
@@ -85,6 +84,10 @@ if (isset($_GET['action'])) {
 
                 if ($session->is_logged_in()) {
 
+
+
+
+
                     $rondomcity     = Characters::RondonCity();
                     $account        = Accounts::find_by_id($session->user_id);
                     $Ranckname      = Characters::Ranks_Names(0, $characterData->sex);
@@ -113,6 +116,11 @@ if (isset($_GET['action'])) {
                     $characters->handcrimetime  = 0;
 
                     $characters->Save();
+
+
+
+
+
 
                 }
 

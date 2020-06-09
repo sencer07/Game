@@ -132,35 +132,28 @@ $data = Game::Viwedata();
                 <tr>
                     <td><a class="text-white" href="/index.php?module=Crimes"><b>Next crime attempt</b></a></td>
 
-                    <td><a href="/index.php?module=Crimes"><?php
-                            //<span data-time-end='1591370857'>1 M15 S</span>
-
-                            $handCrime = $data->character->handcrimetime;
-                            if($data->character->handcrimetime >= time()){ echo "<span data-time-end='$handCrime'>$handCrime</span>"; }else{ echo "Now"; }
-
-
-                            ?></a></td>
+                    <td><a href="/index.php?module=Crimes"><?php echo  Game::Timeleft(); ?></a></td>
 
                 </tr>
                 <tr>
                     <td><a class="text-white" href="/index.php?module=Cars"><b>Next car attempt</b></a></td>
-                    <td><a href="/index.php?module=Cars">Now</a></td>
+                    <td><a href="/index.php?module=Cars"><?php echo  Game::Timeleft(); ?></a></td>
                 </tr>
                 <tr>
                     <td><a class="text-white" href="/index.php?module=GroupCrimes"><b>Next heist</b></a></td>
-                    <td><a href="/index.php?module=GroupCrimes">Now</a></td>
+                    <td><a href="/index.php?module=GroupCrimes"><?php echo  Game::Timeleft(); ?></a></td>
                 </tr>
                 <tr>
                     <td><a class="text-white" href="/index.php?module=GroupCrimes"><b>Next organised crime</b></a></td>
-                    <td><a href="/index.php?module=GroupCrimes">Now</a></td>
+                    <td><a href="/index.php?module=GroupCrimes"><?php echo  Game::Timeleft(); ?></a></td>
                 </tr>
                 <tr>
                     <td><a class="text-white" href="/index.php?module=GroupCrimes"><b>Next mega organised crime</b></a></td>
-                    <td><a href="/index.php?module=GroupCrimes">Now</a></td>
+                    <td><a href="/index.php?module=GroupCrimes"><?php echo  Game::Timeleft(); ?></a></td>
                 </tr>
                 <tr>
                     <td><a class="text-white" href="/index.php?module=Travel"><b>Next flight</b></a></td>
-                    <td><a href="/index.php?module=Travel">Now</a></td>
+                    <td><a href="/index.php?module=Travel"><?php echo  Game::Timeleft(); ?></a></td>
                 </tr>
                 <tr>
                     <td><a class="text-white" href="/bullets2.php"><b>Next bullet deal</b></a></td>
