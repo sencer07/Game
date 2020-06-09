@@ -37,6 +37,7 @@ class Render
     public static function views($file = null, $data = null)
     {
 
+        $data = (object) $data;
 
         $file_dir = Sys() . 'Viwes/' . $file . '.php';
         if (file_exists($file_dir)) {
