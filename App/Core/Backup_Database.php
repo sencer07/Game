@@ -77,6 +77,7 @@ class Backup_Database {
         $this->disableForeignKeyChecks = defined('DISABLE_FOREIGN_KEY_CHECKS') ? DISABLE_FOREIGN_KEY_CHECKS : true;
         $this->batchSize               = defined('BATCH_SIZE') ? BATCH_SIZE : 1000; // default 1000 rows
         $this->output                  = '';
+
     }
 
     protected function initializeDatabase() {
