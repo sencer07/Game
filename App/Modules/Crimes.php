@@ -4,24 +4,28 @@ require_once("../initialize.php");
 $crimeType = "crime";
 
 
+$logo       = "icon-waiting.png";
+$icon       = "jail-logo";
+$wrapper    = "popup-warning";
+$message    = "You are too tired to handle another crime attempt right now. Take a rest and you will soon be ready to roll again.";
+$money ="";
+$headname="Too tired";
+
+$TypeMessage=2;
+
+
+
+
+
+
+
+
+
 $data = Game::Viwedata();
 
-/**
- * @todo
- * this is till need to fix if it is susseful template or faild
- * on template
- *
- * it still need to now how many procenteges on eche crime attemps
- * this part need lital bit stady an traning
- * workin on
- * my room3622
- */
-
-//echo "<pre>";
-//print_r($data);
-
-
 $make =0;
+
+
 
 if(isset($_POST['67bcekxAPZ']) =="yes"){
 
@@ -36,6 +40,21 @@ if(isset($_POST['67bcekxAPZ']) =="yes"){
 
             $make =1;
             Characters::CrimeCount($crimeType);
+
+           $CrimeDataOutput =  Game::Crimes($crimeType);
+
+
+
+            $logo        = $CrimeDataOutput->logo;
+            $icon        = $CrimeDataOutput->icon;
+            $wrapper     = $CrimeDataOutput->wrapper;
+            $message     = $CrimeDataOutput->message;
+            $money       = $CrimeDataOutput->money;
+            $TypeMessage = $CrimeDataOutput->TypeMessage;
+            $headname    = $CrimeDataOutput->headname;
+
+
+
 
 
             /**
@@ -122,6 +141,19 @@ if($time >= time()){
 
 }
 
+$html = array(
+
+    "logo"          =>  $logo,
+    "icon"          =>  $icon,
+    "wrapper"       =>  $wrapper,
+    "message"       =>  $message,
+    "money"         =>  $money,
+    "TypeMessage"   =>  $TypeMessage,
+    "headname"      =>  $headname
+);
+
+$html = (object) $html;
+
 
 $data5 = array(
 
@@ -132,7 +164,8 @@ $data5 = array(
     "chance4"       =>$chance4,
     "chance5"       =>$chance5,
     "make"          =>$make,
-    "CrimeType"     =>$crimeType
+    "CrimeType"     =>$crimeType,
+    "html"          =>$html
 
 );
 

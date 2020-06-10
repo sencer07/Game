@@ -31,6 +31,171 @@ class Game
     }
 
 
+    public static function Crimes($type=null){
+
+        $attempts = self::CrimesAtempt();
+
+        if($attempts==1){
+
+
+            $logo       = "check.png";
+            $icon       = "check";
+            $wrapper    = "";
+            $message    = "hehehe";
+            $money      = number_format(48885);
+            $attemp     = 3;
+            $headname   = "WELL DONE!";
+
+        }elseif ($attempts==0){
+
+
+            $logo       = "fail-logo.png";
+            $icon       = "error icon";
+            $wrapper    = "popup-error";
+            $message    = "You failed but got away";
+            $money      = "";
+            $headname   = "ATTEMPT FAILED!";
+            $attemp     = 2;
+
+        }
+
+
+
+
+
+
+        $data=array(
+            "logo"          => $logo,
+            "icon"          => $icon,
+            "wrapper"       => $wrapper,
+            "message"       => $message,
+            "money"         => $money,
+            "TypeMessage"   => $attemp,
+            "headname"      => $headname,
+
+        );
+
+
+        $data =  (object) $data;
+
+        return $data;
+    }
+
+    public static function CrimesAtempt(){
+
+
+        /**
+         * this is a temporary placeholder
+         *
+         * @todo
+         * this as to be base of chance  that the user ass
+         */
+        $data =(rand(0, 1));
+
+
+        return $data;
+
+    }
+
+
+    public static function PopUp($wrapper=null, $logo=null, $icon=null,$message=null, $crime_time=null, $money=null, $p=null, $headname=null){
+        $rondonImg = (rand(1, 4));
+
+
+
+        if($p == 2) {
+            $classhtml = "popup-container-wrapper";
+        }elseif ($p ==3){
+            $classhtml="success-wrapper";
+        }
+
+
+        $out     = '<div class="error-wrapper">';
+
+
+        $out    .= '<div class="'.$classhtml.'">';
+
+        $out    .= '<div class="'.$classhtml.'-head '.$wrapper.' ">';
+
+        $out    .= '<h4>';
+
+        if($p==3){
+
+            $out .='<img src="/assets/omerta/main/layout/assets/img/wrapper/check.png" alt="check-img" class="check">
+                    <span>'.$headname.'</span>';
+
+        }else {
+
+            $out .= ' <img src="/assets/omerta/main/layout/assets/img/wrapper/' . $logo . '?>" alt="' . $icon . ' " class="check">
+                        <span>'.$headname.'</span>
+
+                        <a href="javascript:void(0);" class="pull-right"
+                           title="You failed to steal a car but you are still free.">
+                            <img src="/assets/omerta/main/layout/assets/img/wrapper/fail-question.png" alt="question" width="22">
+                        </a>';
+        }
+
+        $out    .= '</h4>';
+
+        $out    .= '</div>';
+
+        if($p==3){
+
+        $out .='<div class="success-wrapper-contents ">
+                <img src="/assets/omerta/modules/Crimes/assets/img/welldone-'.$rondonImg.'.jpg" style="height: 100%, width: 100%" alt="well done">
+
+                <div class="success-wrapper-contents-inner">
+                    <p class="crime-txt">You made</p>
+                    <p class="crime-txt crime-profit"> $ '.$money.'</p>
+                    <p class="crime-txt">From your crime</p>
+                </div>
+            </div>';
+
+        }else {
+            $out .= '<div class="popup-container-wrapper-contents"><img src="/assets/omerta/modules/Crimes/assets/img/failed-'.$rondonImg.'.jpg"
+                         alt="Crime failed image">
+
+                    <div class="popup-container-wrapper-contents-inner">
+                        <h3>' . $message . '</h3>
+                    </div>
+                </div>';
+        }
+
+        if($p ==2){
+            $out   .= self::PopUpcountdown($crime_time);
+            }
+
+        $out   .= ' </div>';
+
+        $out   .= ' </div>';
+        return $out;
+
+    }
+
+
+    public static function PopUpcountdown($time=null){
+
+
+        $out = ' <div class="popup-container-wrapper-footer popup-countdown-footer">
+                    <ul>
+                        <li data-time-end="'.$time.'" data-timecb="popupButtonNow"></li>
+                        <li>
+                            <button id="popupButtonNow" class="btn btn-grey btn-bold btn-big"
+                                    onclick="$(\'.menu-item-crimes-crimes a\').click()" disabled="disabled"
+                                    data-ready="Go for it!">PLEASE WAIT...
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>';
+
+
+        return $out;
+
+    }
+
+
+
 
 
     public static function Timeleft($time=null){

@@ -123,48 +123,23 @@
     if ($data->crime_time >= time()) {
 
 
-        $att = (rand(1, 4));
-        ?>
 
-        <div class="error-wrapper">
-            <div class="popup-container-wrapper">
-                <div class="popup-container-wrapper-head popup-error">
-                    <h4>
 
-                        <img src="/assets/omerta/main/layout/assets/img/wrapper/fail-logo.png" alt="error icon"
-                             class="check">
-                        <span>ATTEMPT FAILED!</span>
 
-                        <a href="javascript:void(0);" class="pull-right"
-                           title="You failed to steal a car but you are still free.">
-                            <img src="/assets/omerta/main/layout/assets/img/wrapper/fail-question.png" alt="question"
-                                 width="22">
-                        </a>
-                    </h4>
-                </div>
-                <div class="popup-container-wrapper-contents">
-                    <img src="/assets/omerta/modules/Crimes/assets/img/failed-<?php echo $att; ?>.jpg" alt="Crime failed image">
 
-                    <div class="popup-container-wrapper-contents-inner">
-                        <h3>You failed but got away </h3>
-                    </div>
-                </div>
-                <div class="popup-container-wrapper-footer popup-countdown-footer">
-                    <ul>
-                        <li data-time-end="<?php echo $data->crime_time; ?>" data-timecb="popupButtonNow"></li>
-                        <li>
-                            <button id="popupButtonNow" class="btn btn-grey btn-bold btn-big"
-                                    onclick="$('.menu-item-crimes-crimes a').click()" disabled="disabled"
-                                    data-ready="Go for it!">PLEASE WAIT...
-                            </button>
-                        </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-        </div>
 
-        <?php
+        echo Game::PopUp(
+
+                $data->html->wrapper,
+                $data->html->logo,
+                $data->html->icon,
+                $data->html->message,
+                $data->crime_time,
+                $data->html->money,
+                $data->html->TypeMessage,
+                $data->html->headname
+        );
+
     } else {
         ?>
 
@@ -180,11 +155,7 @@
     }
 
 
-
-
     ?>
-
-
 
 
 </div>
@@ -193,7 +164,7 @@
 <?php
 
 if ($data->make) {
-    echo Characters::cooldown($data->CrimeType,90);
+    echo Characters::cooldown($data->CrimeType, 90);
 }
 
 ?>

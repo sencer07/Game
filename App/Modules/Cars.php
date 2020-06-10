@@ -6,6 +6,18 @@ $make =0;
 
 $crimeType = "Car";
 
+$logo       = "icon-waiting.png";
+$icon       = "jail-logo";
+$wrapper    = "popup-warning";
+$message    = "You are too tired to handle another crime attempt right now. Take a rest and you will soon be ready to roll again.";
+$money ="";
+$headname="Too tired";
+
+$TypeMessage=2;
+
+
+
+
 
 if(isset($_POST['69djklsFNP']) =="yes"){
 
@@ -19,6 +31,21 @@ if(isset($_POST['69djklsFNP']) =="yes"){
             case "chance1":
 
                 Characters::CrimeCount($crimeType);
+
+
+                $CrimeDataOutput =  Game::Crimes($crimeType);
+
+
+
+                $logo        = $CrimeDataOutput->logo;
+                $icon        = $CrimeDataOutput->icon;
+                $wrapper     = $CrimeDataOutput->wrapper;
+                $message     = $CrimeDataOutput->message;
+                $money       = $CrimeDataOutput->money;
+                $TypeMessage = $CrimeDataOutput->TypeMessage;
+                $headname    = $CrimeDataOutput->headname;
+
+
                 Characters::UpdateUserRP($data->character->rankleval);
                 $make =1;
 
@@ -94,6 +121,19 @@ if($time >= time()){
 
 
 
+$html = array(
+
+    "logo"          =>  $logo,
+    "icon"          =>  $icon,
+    "wrapper"       =>  $wrapper,
+    "message"       =>  $message,
+    "money"         =>  $money,
+    "TypeMessage"   =>  $TypeMessage,
+    "headname"      =>  $headname
+);
+
+$html = (object) $html;
+
 
 
 
@@ -107,12 +147,16 @@ $data5 = array(
     "chance3"       =>$chance3,
     "chance4"       =>$chance4,
     "make"          =>$make,
-    "CrimeType"     =>$crimeType
+    "CrimeType"     =>$crimeType,
+    "html"          =>$html
 
 );
 
 
 
+
+
+$data5 = (object) $data5;
 
 
 
