@@ -1,7 +1,7 @@
 <?php
 require_once("../initialize.php");
 
-
+$crimeType = "crime";
 
 
 $data = Game::Viwedata();
@@ -35,7 +35,13 @@ if(isset($_POST['67bcekxAPZ']) =="yes"){
 
 
             $make =1;
-            Characters::CrimeCount();
+            Characters::CrimeCount($crimeType);
+
+
+            /**
+             *  Characters::UpdateUserRP($data->character->rankleval);
+             *  can be reused easy to update
+             */
             Characters::UpdateUserRP($data->character->rankleval);
             break;
         case "chance2":
@@ -43,31 +49,32 @@ if(isset($_POST['67bcekxAPZ']) =="yes"){
 
 
             $make =1;
-            Characters::CrimeCount();
+            Characters::CrimeCount($crimeType);
             Characters::UpdateUserRP($data->character->rankleval);
             break;
+
         case "chance3":
 
 
-
             $make =1;
-            Characters::CrimeCount();
+            Characters::CrimeCount($crimeType);
             Characters::UpdateUserRP($data->character->rankleval);
             break;
+
         case "chance4":
 
 
 
             $make =1;
-            Characters::CrimeCount();
+            Characters::CrimeCount($crimeType);
             Characters::UpdateUserRP($data->character->rankleval);
             break;
+
         case "chance5":
 
 
-
             $make =1;
-            Characters::CrimeCount();
+            Characters::CrimeCount($crimeType);
             Characters::UpdateUserRP($data->character->rankleval);
             break;
 
@@ -87,6 +94,12 @@ $time = $data2->character->handcrimetime;
 
 if($time >= time()){
 
+    /**
+     * if the user is can do crimes
+     * then hide a percentage of successful
+     *
+     */
+
     $chance1 = 0;
     $chance2 = 0;
     $chance3 = 0;
@@ -94,6 +107,12 @@ if($time >= time()){
     $chance5 = 0;
 
 }elseif($time <= time()){
+
+    /**
+     * if the user is can do crimes
+     * then display a percentage of successful
+     *
+     */
 
     $chance1 = 61;
     $chance2 = 62;
@@ -112,7 +131,8 @@ $data5 = array(
     "chance3"       =>$chance3,
     "chance4"       =>$chance4,
     "chance5"       =>$chance5,
-    "make"          =>$make
+    "make"          =>$make,
+    "CrimeType"     =>$crimeType
 
 );
 

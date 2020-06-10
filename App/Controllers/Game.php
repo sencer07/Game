@@ -177,6 +177,44 @@ class Game
     }
 
 
+    public static function Health($rp=null){
+
+        /**
+         * this function is dysplayng the ranck progrese on info page
+         *
+         */
+
+
+        if(empty($rp)){
+
+            echo "  <td bgcolor=red width='100%' align='center'><span style='color:black;text-shadow: none;'>$rp%</span></td>";
+
+        }elseif ($rp==100){
+
+            echo "<td bgcolor=green width='100%' align='center'><span style='color:black;text-shadow: none;'>$rp%</span></td>";
+
+        }else{
+
+            if($rp <= 50){
+
+                $cal= 100-$rp;
+                echo "<td bgcolor=green width='$rp%'></td>";
+                echo "<td bgcolor=red width='$cal%' ><span style='color:black;text-shadow: none;'>$rp%</span></td>";
+
+            }
+            if($rp >= 51){
+
+                $cal= 100-$rp;
+                echo "<td bgcolor=green width='$rp%' align='center'><span style='color:black;text-shadow: none;'>$rp%</span></td>";
+                echo "<td bgcolor=red width='$cal%' ></td>";
+
+            }
+
+        }
+
+    }
+
+
 
     public static function Rank_Progress($rp=null){
 

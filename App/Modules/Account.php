@@ -97,6 +97,7 @@ if (isset($_GET['action'])) {
                     $characters->account_id     = $account->id;
                     $characters->name           = $characterData->name;
                     $characters->alive          = 1;
+                    $characters->health         = 100;
                     $characters->sex            = $characterData->sex;
                     $characters->sexKeyName     = Characters::sexKeyName($characterData->sex);
                     $characters->rankNames      = $Ranckname->RackName;
@@ -114,6 +115,8 @@ if (isset($_GET['action'])) {
                     $characters->dead           = 0;
                     $characters->handcrimecount = 0;
                     $characters->handcrimetime  = 0;
+                    $characters->carcrimecount  = 0;
+                    $characters->carcrimetime   = 0;
 
                     $characters->Save();
 

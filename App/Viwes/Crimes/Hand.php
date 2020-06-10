@@ -187,16 +187,13 @@
 
 </div>
 
+
 <?php
+
 if ($data->make) {
-    ?>
-
-    <script>
-        omerta_cooldown('crime', 90, 90);
-    </script>
-
-    <?php
+    echo Characters::cooldown($data->CrimeType,90);
 }
+
 ?>
 
 

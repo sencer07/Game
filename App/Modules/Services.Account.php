@@ -2,18 +2,12 @@
 
 if($session->is_logged_in()){
 
-    $account = Accounts::find_by_id($session->user_id);
-    $character = Characters::find_by_account_id($account->id);
-    $city = Citys::find_by_id($character->cityid);
+
+    $info = Game::Viwedata();
 
 
-    $RPname = Characters::Ranks_Names($character->rankNames, $character->sex);
 
 
-    /**
-     * 'user_status' => 2,
-     * change to 3 layout thet the account is deade
-     */
 
 
     $data2 = array(
@@ -22,8 +16,8 @@ if($session->is_logged_in()){
     'release' => '1392 days ago',
     'city' =>
         array(
-            'id'    => $city->id,
-            'name'  => $city->name,
+            'id'    => $info->character->cityid,
+            'name'  => $info->city,
         ),
     'family' => '0',
     'extra' =>
@@ -32,15 +26,15 @@ if($session->is_logged_in()){
         ),
     'cooldowns' =>
         array(
-            'crime' => 0,
-            'car' => 0,
-            'travel' => $character->flytime-time(),
+            'crime' => $info->character->handcrimetime,
+            'car' => $info->character->carcrimetime,
+            'travel' => 0,
             'bullets' => 0,
         ),
     'progressbars' =>
         array(
-            'rankprogress' => $character->rank_pro,
-            'health' => '100',
+            'rankprogress' => $info->character->rank_pro,
+            'health' => $info->character->health,
             'killskill' => '0.00',
             'bustskill' => 0,
             'raceform' => 0,
@@ -63,10 +57,10 @@ if($session->is_logged_in()){
                     'admin' => 0,
                 ),
         ),
-    'money'     => $character->money,
-    'bank'      => $character->backmoney,
-    'bullets'   => $character->bullets,
-    'rankname'  => $character->rankNames,
+    'money'     => $info->character->money,
+    'bank'      => $info->character->backmoney,
+    'bullets'   => $info->character->bullets,
+    'rankname'  => $info->character->rankNames,
     'tickets'   =>
         array(),
     'bugs' =>

@@ -12,8 +12,6 @@
 
 
 
-
-
 ?>
 <div id="module_Cars" class="moduleContainer">
     <div id="nick-car-choices" class="popup-boxess-container">
@@ -22,7 +20,7 @@
         <div class="popup-box-wrapper"  id="ncar-stadium" >
             <div class="popup-place-wrapper ">
                 <div class="head">
-                    <h4>21%</h4>
+                    <h4><?php echo $data->chance1; ?>%</h4>
                 </div>
                 <div class="content-wrapper">
                     <img src="/assets/omerta/modules/Cars/assets/img/car-1.jpg" alt="" class="img-responsive">
@@ -43,7 +41,7 @@
         <div class="popup-box-wrapper"  id="ncar-parking" >
             <div class="popup-place-wrapper ">
                 <div class="head">
-                    <h4>13%</h4>
+                    <h4><?php echo $data->chance2; ?>%</h4>
                 </div>
                 <div class="content-wrapper">
                     <img src="/assets/omerta/modules/Cars/assets/img/car-2.jpg" alt="" class="img-responsive">
@@ -64,7 +62,7 @@
         <div class="popup-box-wrapper"  id="ncar-gas" >
             <div class="popup-place-wrapper ">
                 <div class="head">
-                    <h4>28%</h4>
+                    <h4><?php echo $data->chance3; ?>%</h4>
                 </div>
                 <div class="content-wrapper">
                     <img src="/assets/omerta/modules/Cars/assets/img/car-3.jpg" alt="" class="img-responsive">
@@ -85,7 +83,7 @@
         <div class="popup-box-wrapper"  id="ncar-road" >
             <div class="popup-place-wrapper ">
                 <div class="head">
-                    <h4>9%</h4>
+                    <h4><?php echo $data->chance4; ?>%</h4>
                 </div>
                 <div class="content-wrapper">
                     <img src="/assets/omerta/modules/Cars/assets/img/car-4.jpg" alt="" class="img-responsive">
@@ -120,3 +118,12 @@
         <input type="hidden" name="" value="" id="crimes-selected-option">
     </form>
 </div>
+
+<?php
+
+if ($data->make) {
+    echo Characters::cooldown($data->CrimeType,300);
+}
+
+?>
+

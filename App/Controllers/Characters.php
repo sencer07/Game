@@ -11,6 +11,7 @@ class Characters
     public $account_id;
     public $name;
     public $alive;
+    public $health;
     public $sex;
     public $sexKeyName;
     public $rankNames;
@@ -28,10 +29,12 @@ class Characters
     public $dead;
     public $handcrimecount;
     public $handcrimetime;
+    public $carcrimecount;
+    public $carcrimetime;
 
 
 
-    public static function CrimeCount(){
+    public static function CrimeCount($typeCrime=null){
 
         /**
          * counting hand crimes only
@@ -43,19 +46,33 @@ class Characters
             $account = Accounts::find_by_id($session->user_id);
             $character = Characters::find_by_account_id($account->id);
 
-            $character->handcrimecount = $character->handcrimecount +1;
+           if($typeCrime =="crime") {
 
-            $character->handcrimetime = time()+90;
+               $character->handcrimecount = $character->handcrimecount + 1;
+               $character->handcrimetime = time() + 90;
 
+           }elseif ($typeCrime == "Car"){
+
+               $character->carcrimecount = $character->carcrimecount + 1;
+               $character->carcrimetime = time() + 300;
+
+
+           }
 
             $character->Save();
-
-
         }
-
 
     }
 
+
+    public static function cooldown($type, $time=null){
+
+        $cooldown ="<script>";
+        $cooldown .="omerta_cooldown('$type', $time, $time);";
+        $cooldown .="</script>";
+
+        return $cooldown;
+    }
 
 
 
