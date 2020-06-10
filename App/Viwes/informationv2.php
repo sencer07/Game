@@ -132,7 +132,7 @@ $data = Game::Viwedata();
                 <tr>
                     <td><a class="text-white" href="/index.php?module=Crimes"><b>Next crime attempt</b></a></td>
 
-                    <td><a href="/index.php?module=Crimes"><?php echo  Game::Timeleft(); ?></a></td>
+                    <td><a href="/index.php?module=Crimes"><?php echo  Game::Timeleft($data->character->handcrimetime); ?></a></td>
 
                 </tr>
                 <tr>

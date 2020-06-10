@@ -1,6 +1,9 @@
 <?php
 require_once("../initialize.php");
 
+
+
+
 $data = Game::Viwedata();
 
 /**
