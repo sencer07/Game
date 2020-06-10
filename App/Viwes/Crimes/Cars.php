@@ -110,6 +110,48 @@
 
     </script>
 
+    <?php
+
+    if ($data->crime_time >= time()) {
+        $att = (rand(1, 4));
+    ?>
+
+
+
+        <div class="error-wrapper">
+            <div class="popup-container-wrapper">
+                <div class="popup-container-wrapper-head popup-warning">
+                    <h4>
+                        <img src="/assets/omerta/main/layout/assets/img/wrapper/icon-waiting.png" alt="jail-logo"
+                             class="check">
+                        <span>Too tired</span>
+                    </h4>
+                </div>
+                <div class="popup-container-wrapper-contents">
+                    <img src="/assets/omerta/modules/Cars/assets/img/tired-<?php echo $att; ?>.jpg" alt="Car tired image">
+
+                    <div class="popup-container-wrapper-contents-inner">
+                        <p>You're still busy searching a target for your next attempt.</p>
+                    </div>
+                </div>
+                <div class="popup-container-wrapper-footer popup-countdown-footer">
+                    <ul>
+                        <li data-time-end="<?php echo $data->crime_time; ?>" data-timecb="popupButtonNow"></li>
+                        <li>
+                            <button id="popupButtonNow" class="btn btn-grey btn-bold btn-big" onclick="$('.menu-item-crimes-cars a').click()"
+                                    disabled="disabled"  data-ready="Go for it!">PLEASE WAIT...
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+
+
+    <?php
+    }else{
+    ?>
 
     <div class="clearfix"></div>
 
@@ -117,6 +159,10 @@
         <input type="hidden" name="69djklsFNP" value="Yes">
         <input type="hidden" name="" value="" id="crimes-selected-option">
     </form>
+
+    <?php } ?>
+
+
 </div>
 
 <?php

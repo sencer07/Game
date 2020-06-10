@@ -122,6 +122,8 @@
 
     if ($data->crime_time >= time()) {
 
+
+        $att = (rand(1, 4));
         ?>
 
         <div class="error-wrapper">
@@ -141,7 +143,7 @@
                     </h4>
                 </div>
                 <div class="popup-container-wrapper-contents">
-                    <img src="/assets/omerta/modules/Crimes/assets/img/failed-1.jpg" alt="Crime failed image">
+                    <img src="/assets/omerta/modules/Crimes/assets/img/failed-<?php echo $att; ?>.jpg" alt="Crime failed image">
 
                     <div class="popup-container-wrapper-contents-inner">
                         <h3>You failed but got away </h3>
