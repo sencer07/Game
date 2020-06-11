@@ -452,16 +452,7 @@ class Characters
 
     */
 
-    public static function rankNames($number=null){
 
-        switch ($number) {
-            case 0:
-                $name = "Empty-suit";
-                break;
-        }
-
-        return $name;
-    }
 
 
     public static function sexKeyName($n=null){

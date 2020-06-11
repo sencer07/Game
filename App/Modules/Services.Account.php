@@ -40,23 +40,12 @@ if($session->is_logged_in()){
             'raceform' => 0,
             'honorpoints' => '0',
         ),
-    'messages' =>
-        array(
-            'inbox' =>
-                array(),
-            'alert' =>
-                array(),
-            'admin' =>
-                array(),
-            'news' =>
-                array(),
-            'counter' =>
-                array(
-                    'inbox' => 0,
-                    'alert' => 0,
-                    'admin' => 0,
-                ),
-        ),
+
+        /**
+         * more info to be add on SysMAil::Alert()
+         * cerful is admin msg is set to one it blocks de user to veiwe the messages is as to be send off on landing page
+         */
+    'messages' =>SysMAil::Alert(),
     'money'     => $info->character->money,
     'bank'      => $info->character->backmoney,
     'bullets'   => $info->character->bullets,

@@ -5,7 +5,7 @@ class Render
 {
 
 
-    public function Json($data = null)
+    public static function Json($data = null)
     {
         header('Content-Type: application/json, text/javascript');
         echo json_encode($data);
