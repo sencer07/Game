@@ -120,31 +120,31 @@ class SysMAil
             );
             if($inbox && $admin==0){
                 $inboxdata = array('inbox'=>$inbox);
-            }elseif ($inbox && $admin==1){
+            }else{
                 $inboxdata = array();
             }
 
 
-            if($alert && $admin==0){
+            if($alert and $admin==0){
                 $alertdata = array('alert'=>$alert);
-            }elseif ($inbox && $admin==1){
+            }else{
                 $alertdata = array();
             }
 
-            if($admin==0 && $admin==0){
+            if($admin==0 and $admin==0){
                 $admindata = array();
-            }elseif ($inbox && $admin==1){
+            }else{
                 $admindata = array('admin'=>$admin);
             }
 
             if($news && $admin==0){
                 $newsdata = array('news'=>$news);
-            }elseif ($news && $admin==1){
+            }else{
                 $newsdata = array();
             }
 
 
-            $data4 = array('inbox'=>$inboxdata, 'alert'=>$alertdata, 'admin'=>$admindata, 'news'=>$newsdata ,"counter"=>$showinfo);
+            $data4 = array('inbox'=>$inboxdata, 'alert'=>$alertdata, 'admin'=>array(), 'news'=>array() ,"counter"=>$showinfo);
 
 
 
