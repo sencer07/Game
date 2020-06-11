@@ -106,7 +106,7 @@ $data = Game::Viwedata();
                     <td><b>Rank </b><img rel="tooltip" src="/static/images/game/generic/tooltip.png"
                                          title="Your current rank. Doing crimes and other &lt;br /&gt;criminal activities will let you grow in rank. &lt;br /&gt;You can find a list over all the ranks in the FAQ.">
                     </td>
-                    <td><?php echo $data->character->rankNames; ?>
+                    <td><?php echo Characters::Ranks_Names($data->character->rankleval,$data->character->sex)->RackName; ?>
                 </tr>
                 <tr>
                     <td><a href="/honorpoints.php"><b>Honour points</b></a> <img rel="tooltip"

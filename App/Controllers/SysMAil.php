@@ -45,7 +45,7 @@ class SysMAil
 
     public static function MessagesTypes($type){
         /**
-         *  1=Personal, 2=Donate, 3=Admin, 4=Bustout, 5=Group Crime
+         *  1=Personal, 2=Donate, 3=Admin, 4=Bustout, 5=Group Crime, 6=Family, 7=System
          */
 
 
@@ -59,7 +59,12 @@ class SysMAil
             return "Bustout";
         }elseif ($type==5){
             return "Group Crime";
+        }elseif ($type==6){
+            return "Family";
+        } elseif ($type==7){
+            return "System";
         }
+
 
 
     }
@@ -223,7 +228,7 @@ class SysMAil
             $Send->dell         = 0;
             $Send->type         = 1;
             $Send->alert        = 1;
-            $Send->date = date('d-F @ H:i:s');
+            $Send->date         = date('d-F @ H:i:s');
             $Send->Save();
 
             return "Message Sent";

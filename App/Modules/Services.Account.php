@@ -6,7 +6,9 @@ if($session->is_logged_in()){
     $info = Game::Viwedata();
 
 
-
+    /**
+     * {"data":{"logout":true},"code":0,"time":1591907393,"debug":[]}
+     */
 
 
 

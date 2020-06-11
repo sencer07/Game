@@ -158,6 +158,26 @@ class Characters
 
 
             $character->rankNames = self::Ranks_Names($character->rankleval, $character->sex)->RackName;
+
+
+            /**
+             * send promotion msg from system
+             *
+             */
+
+            $uplevel = new SysMAil();
+            $uplevel->senderid      ="System";
+            $uplevel->sendername    ="System";
+            $uplevel->send_to       =$character->name;
+            $uplevel->subject       ="Promoted";
+            $uplevel->msg           ="You have been promoted to ".self::Ranks_Names($character->rankleval, $character->sex)->RackName;
+            $uplevel->readed        =0;
+            $uplevel->dell          =0;
+            $uplevel->type          =7;
+            $uplevel->alert         =1;
+            $uplevel->date          =date('d-F @ H:i:s');
+            $uplevel->Create();
+
             $character->Save();
 
         }
