@@ -28,8 +28,8 @@ if($session->is_logged_in()){
         ),
     'cooldowns' =>
         array(
-            'crime' => $info->character->handcrimetime,
-            'car' => $info->character->carcrimetime,
+            'crime' => $info->character->handcrimetime-time(),
+            'car' => $info->character->carcrimetime-time(),
             'travel' => 0,
             'bullets' => 0,
         ),
