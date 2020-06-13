@@ -1,6 +1,9 @@
 <?php
 require_once("../initialize.php");
 
+
+$data = Game::Viwedata();
+
 $crimeType = "crime";
 
 
@@ -16,6 +19,23 @@ $TypeMessage=2;
 
 
 
+
+if($data->character->prison >= time()){
+
+
+    $message="";
+
+    $data3 = array(
+        "timeleft"=>$data->character->prison,
+        "timeleftphp"=>Game::Timeleft($data->character->handcrimetime),
+        "message"=>$message,
+        "byout"=>Game::PrisonPrice(),
+    );
+
+    Game::UpdateClicks();
+
+    Render::views("prison",$data3);
+}
 
 
 
@@ -41,10 +61,7 @@ if(isset($_POST['67bcekxAPZ']) =="yes"){
             $make =1;
             Characters::CrimeCount($crimeType);
 
-           $CrimeDataOutput =  Game::Crimes($crimeType);
-
-
-
+            $CrimeDataOutput =  Game::Crimes($crimeType);
             $logo        = $CrimeDataOutput->logo;
             $icon        = $CrimeDataOutput->icon;
             $wrapper     = $CrimeDataOutput->wrapper;
@@ -64,6 +81,7 @@ if(isset($_POST['67bcekxAPZ']) =="yes"){
             Characters::UpdateUserRP($data->character->rankleval);
             break;
         case "chance2":
+
 
 
 
@@ -171,6 +189,14 @@ $data5 = array(
 
 
 $data5 = (object) $data5;
+
+
+
+
+/**
+ * Updating user Clicks on every page
+ */
+Game::UpdateClicks();
 
 
 Render::views("Crimes/Hand",$data5);

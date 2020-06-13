@@ -117,6 +117,8 @@ if (isset($_GET['action'])) {
                     $characters->handcrimetime  = 0;
                     $characters->carcrimecount  = 0;
                     $characters->carcrimetime   = 0;
+                    $characters->lastclick      = time();
+                    $characters->prison         = 0;
 
                     $characters->Save();
 

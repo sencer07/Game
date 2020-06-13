@@ -9,4 +9,7 @@ $data =array(
 );
 
 
+Game::UpdateClicks();
+
+
 Render::views("informationv2", $data);

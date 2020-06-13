@@ -20,18 +20,8 @@ if($session->is_logged_in()){
     }else{
 
 
-        //echo "<pre>";
-        //print_r($data);
 
-        //echo "</pre>";
         Render::views("game",$data);
-
-
-
-     // echo   Game::Timeleft(time()+50);
-
-
-
 
 
     }

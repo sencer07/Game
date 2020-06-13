@@ -30,12 +30,81 @@ class Game
 
     }
 
+    public static function CountOnlineUsers(){
+
+
+
+
+
+
+            $sql2 = "SELECT * FROM characters ";
+
+            $t = time();
+            $sql2 .= " WHERE lastclick > '{$t}' ";
+
+
+            $count2 = Characters::find_by_sql($sql2);
+
+
+            $nunber=0;
+            foreach ($count2 as $cont):
+                $nunber++;
+
+            endforeach;
+
+            return$nunber;
+
+
+
+
+
+
+    }
+
+    public static function UpdateClicks(){
+
+
+
+        $session = new Session();
+
+        if ($session->is_logged_in()) {
+
+            $account = Accounts::find_by_id($session->user_id);
+            $character = Characters::find_by_account_id($account->id);
+
+
+            if($character){
+
+
+
+                $character->lastclick = time()+300;
+                $character->Update();
+
+
+            }
+
+
+        }
+
+
+    }
+
+    public static function PrisonPrice(){
+
+        $Price = 100;
+
+
+
+        return $Price;
+    }
+
 
     public static function Crimes($type=null){
 
-        $attempts = self::CrimesAtempt();
+        $attempts =  self::CrimesAtempt();
 
         if($attempts==1){
+
 
 
             $logo       = "check.png";
@@ -46,16 +115,41 @@ class Game
             $attemp     = 3;
             $headname   = "WELL DONE!";
 
-        }elseif ($attempts==0){
 
 
-            $logo       = "fail-logo.png";
-            $icon       = "error icon";
-            $wrapper    = "popup-error";
-            $message    = "You failed but got away";
-            $money      = "";
-            $headname   = "ATTEMPT FAILED!";
-            $attemp     = 2;
+
+        }elseif ($attempts==0) {
+
+
+            $logo = "fail-logo.png";
+            $icon = "error icon";
+            $wrapper = "popup-error";
+            $message = "You failed but got away";
+            $money = "";
+            $headname = "ATTEMPT FAILED!";
+            $attemp = 2;
+
+        }elseif($attempts==2){
+
+
+            /**
+             * sending the user to prison
+             */
+            $userdata = Game::Viwedata();
+
+            $user = Characters::find_by_id($userdata->character->id);
+            $user->prison = time()+60;
+            $user->Update();
+
+
+
+            $logo = "fail-logo.png";
+            $icon = "error icon";
+            $wrapper = "popup-error";
+            $message = "You failed and you are Arrested!";
+            $money = "";
+            $headname = "ATTEMPT FAILED!";
+            $attemp = 2;
 
         }
 
@@ -90,7 +184,7 @@ class Game
          * @todo
          * this as to be base of chance  that the user ass
          */
-        $data =(rand(0, 1));
+        $data =(rand(0, 2));
 
 
         return $data;
@@ -195,6 +289,17 @@ class Game
     }
 
 
+    public static function ResettimeToZero($time){
+
+
+        if($time < 0){
+            $time =0;
+        }
+
+
+        return $time;
+
+    }
 
 
 
@@ -315,10 +420,10 @@ class Game
             $data = array(
 
                 "server_name"   => $_SERVER ['SERVER_NAME'],
-                "Online"        => 1,
-                "Lackeys"       => 2,
-                "Total"         => 3,
-                "Registered"    => 4,
+                "Online"        => self::CountOnlineUsers(),
+                "Lackeys"       => 0,
+                "Total"         => 0,
+                "Registered"    => self::CountAccounts(),
                 "game"          => Game::GameVersion(),
                 "account"       => $account,
                 "character"     => $character,
@@ -329,6 +434,22 @@ class Game
 
         $data = (object) $data;
         return $data;
+    }
+
+
+    public static function CountAccounts(){
+
+
+        $sql2 = "SELECT * FROM accounts ";
+        $count2 = Accounts::find_by_sql($sql2);
+        $t=0;
+        foreach ($count2 as $cont):
+           $t++;
+        endforeach;
+
+
+
+        return $t;
     }
 
 

@@ -56,7 +56,7 @@
             omerta.chat.server = 'https://realtime.barafranca.com';
             omerta.character.info.level(0);
             omerta.chat.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXJzaW9uIjoiY29tIiwiaWQiOiI3NzY3MDEiLCJuYW1lIjoiTWFyYm9ybyIsImNpdHkiOiIzIiwiZmFtaWx5X2lkIjoiMCIsImxhc3RyYW5rIjoiUGljY2lvdHRvIn0.z9-zBy3WtMFh8bjH6vC4FSF0pIy3m0qFDdZ415objHs';
-            omerta.chat.banned(false);
+            omerta.chat.banned(true);
 
 
             // Loader

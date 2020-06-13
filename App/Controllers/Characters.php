@@ -31,6 +31,8 @@ class Characters
     public $handcrimetime;
     public $carcrimecount;
     public $carcrimetime;
+    public $lastclick;
+    public $prison;
 
 
 
@@ -450,27 +452,6 @@ class Characters
     }
 
 
-    /**
-
-    public static function teste(){
-
-
-        $session = new Session();
-        $account = Accounts::find_by_id($session->user_id);
-        $character = Characters::find_by_account_id($account->id);
-        $city = Citys::find_by_id($character->cityid);
-
-
-        $data = array(
-            "account"=>$account,
-            "Characters"=>$character,
-            "city"=>$city
-        );
-        $data = (object) $data;
-        return $data;
-    }
-
-    */
 
 
 

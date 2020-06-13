@@ -1,6 +1,11 @@
 <?php
 require_once("../initialize.php");
+$data = Game::Viwedata();
 
 
-echo  Characters::Ranks_Names(0, 1)->RackName;
 
+
+
+
+echo "<pre>";
+print_r($data);

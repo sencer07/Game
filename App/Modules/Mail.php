@@ -8,6 +8,14 @@ if($session->is_logged_in()){
 
 
 
+    /**
+     * Updating user Clicks on every page
+     */
+    Game::UpdateClicks();
+
+
+
+
     if(isset($_GET['action'])){
 
         $action = $_GET['action'];

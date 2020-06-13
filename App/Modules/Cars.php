@@ -19,6 +19,26 @@ $TypeMessage=2;
 
 
 
+if($data->character->prison >= time()){
+
+
+    $message="";
+
+    $data3 = array(
+        "timeleft"=>$data->character->prison,
+        "timeleftphp"=>Game::Timeleft($data->character->handcrimetime),
+        "message"=>$message,
+        "byout"=>Game::PrisonPrice(),
+    );
+
+    Game::UpdateClicks();
+
+    Render::views("prison",$data3);
+}
+
+
+
+
 if(isset($_POST['69djklsFNP']) =="yes"){
 
 
@@ -44,6 +64,8 @@ if(isset($_POST['69djklsFNP']) =="yes"){
                 $money       = $CrimeDataOutput->money;
                 $TypeMessage = $CrimeDataOutput->TypeMessage;
                 $headname    = $CrimeDataOutput->headname;
+
+
 
 
                 Characters::UpdateUserRP($data->character->rankleval);
@@ -157,6 +179,14 @@ $data5 = array(
 
 
 $data5 = (object) $data5;
+
+
+/**
+ * Updating user Clicks on every page
+ */
+Game::UpdateClicks();
+
+
 
 
 

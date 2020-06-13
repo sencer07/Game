@@ -28,8 +28,8 @@ if($session->is_logged_in()){
         ),
     'cooldowns' =>
         array(
-            'crime' => $info->character->handcrimetime-time(),
-            'car' => $info->character->carcrimetime-time(),
+            'crime' => Game::ResettimeToZero($info->character->handcrimetime-time()),
+            'car' => Game::ResettimeToZero($info->character->carcrimetime-time()),
             'travel' => 0,
             'bullets' => 0,
         ),
@@ -66,6 +66,16 @@ if($session->is_logged_in()){
     'milestoneTimeLeft' => 0,
 );
 
+    //{"data":{"logout":true},"code":0,"time":1591907393,"debug":[]}
+
+    if($info->character->lastclick < time()){
+        $data2 = array(
+           "logout"=>true
+        );
+
+    }
+
+
 
 $debug = array();
 $data = array(
@@ -74,6 +84,10 @@ $data = array(
     "time" => time(),
     "debug" => $debug
 );
+
+
+
+
 
 $render = new Render();
 $render->Json($data);
