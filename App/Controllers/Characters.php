@@ -33,6 +33,7 @@ class Characters
     public $carcrimetime;
     public $lastclick;
     public $prison;
+    public $banktimer;
 
 
 
