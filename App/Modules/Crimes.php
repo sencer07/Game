@@ -59,7 +59,7 @@ if(isset($_POST['67bcekxAPZ']) =="yes"){
 
 
             $make =1;
-            Characters::CrimeCount($crimeType);
+            Characters::CrimeCount($crimeType, $chance);
 
             $CrimeDataOutput =  Game::Crimes($crimeType);
             $logo        = $CrimeDataOutput->logo;

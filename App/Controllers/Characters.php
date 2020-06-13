@@ -37,7 +37,14 @@ class Characters
 
 
 
-    public static function CrimeCount($typeCrime=null){
+    public static function CrimeCount($typeCrime=null,$chance=null){
+
+        /**
+         * @todo
+         * $chance = the type of crime selected my procentage in game mode to be add
+         * invremente as it gos on
+         */
+
 
         /**
          * counting hand crimes only
