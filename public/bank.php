@@ -15,6 +15,23 @@ $message ="";
 
 
 
+    if($data->character->prison >= time()){
+
+
+        $message="";
+
+        $data3 = array(
+            "timeleft"=>$data->character->prison,
+            "timeleftphp"=>Game::Timeleft($data->character->handcrimetime),
+            "message"=>$message,
+            "byout"=>Game::PrisonPrice(),
+        );
+
+        Game::UpdateClicks();
+
+        Render::views("prison",$data3);
+    }
+
 
 
     if(isset($_POST)){
